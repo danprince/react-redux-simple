@@ -1,7 +1,7 @@
 {
   "name": "react-redux-simple",
-  "description": "A stupidly simple abstraction for React-Redux.",
-  "version": "0.0.1",
+  "description": "A selector friendly shortcut for React-Redux",
+  "version": "0.1.0",
   "main": "index.js",
   "author": "Dan Prince",
   "license": "MIT",
