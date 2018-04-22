@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/react-redux-simple.svg)](https://badge.fury.io/js/react-redux-simple)
 [![Build Status](https://travis-ci.org/danprince/react-redux-simple.svg?branch=master)](https://travis-ci.org/danprince/react-redux-simple)
 
-An alternative API for connecting components to your Redux store.
+An alternative way to connect React components to a Redux store.
 
 ```js
 import React from "react";
@@ -68,7 +68,7 @@ npm install react-redux react-redux-simple
 ```
 
 ## Selectors
-A mapping of prop names to [selectors][2] (_a function which takes the state and returns a value_).
+An optional mapping of prop names to [selectors][2] (_a function which takes the state and returns a value_).
 
 ```js
 static selectors = {
@@ -100,7 +100,7 @@ class Artboard extends Component {
 ```
 
 ## Actions
-A mapping of prop names to [action creators][3] (_a function which returns an action_).
+An optional mapping of prop names to [action creators][3] (_a function which returns an action_).
 
 ```js
 static actions = {
@@ -128,11 +128,7 @@ You still need to make sure that your components have access to the store. The e
 of your component tree.
 
 ```js
-import { Provide } from "react-redux";
-
-// or import it from this library
-
-import { Provide } from "react-redux-simple";
+import { Provide } from "react-redux"; // or from "react-redux-simple";
 
 ReactDOM.render(
   <Provide store={myStore}>
