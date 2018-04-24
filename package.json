@@ -9,7 +9,7 @@
     "test": "tape tests.js | tap-spec"
   },
   "peerDependencies": {
-    "react-redux": "^5.0.7"
+    "react-redux": "*"
   },
   "devDependencies": {
     "react": "^16.3.2",
