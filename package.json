@@ -2,16 +2,23 @@
   "name": "react-redux-simple",
   "description": "A selector friendly shortcut for React-Redux",
   "version": "0.2.0",
-  "main": "index.js",
+  "main": "dst/index.js",
   "author": "Dan Prince",
   "license": "MIT",
+  "source": "index.js",
+  "main": "dist/react-redux-simple.js",
+  "module": "dist/react-redux-simple.esm.js",
+  "umd:main": "dist/react-redux-simple.umd.js",
   "scripts": {
-    "test": "tape tests.js | tap-spec"
+    "test": "tape tests.js | tap-spec",
+    "build": "microbundle build",
+    "prepublish": "npm run build"
   },
   "peerDependencies": {
     "react-redux": "*"
   },
   "devDependencies": {
+    "microbundle": "^0.4.4",
     "react": "^16.3.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",

@@ -1,4 +1,4 @@
-let ReactRedux = require("react-redux");
+import * as ReactRedux from "react-redux";
 
 /**
  * Converts selectors into a mapStateToProps implementation.
@@ -76,7 +76,9 @@ function createFullMapDispatchToProps(actionsFactory) {
   }
 }
 
-function connect(component) {
+export const Provider = ReactRedux.Provider;
+
+export function connect(component) {
   let selectors = component.selectors;
   let actions = component.actions;
 
@@ -86,13 +88,9 @@ function connect(component) {
   )(component);
 }
 
-// Private
-exports._createMapDispatchToProps = createMapDispatchToProps;
-exports._createMapStateToProps = createMapStateToProps;
-exports._createFullMapStateToProps = createFullMapStateToProps;
-exports._createBasicMapStateToProps = createBasicMapStateToProps;
-exports._createFullMapDispatchToProps = createFullMapDispatchToProps;
+export const _createMapDispatchToProps = createMapDispatchToProps;
+export const _createMapStateToProps = createMapStateToProps;
+export const _createFullMapStateToProps = createFullMapStateToProps;
+export const _createBasicMapStateToProps = createBasicMapStateToProps;
+export const _createFullMapDispatchToProps = createFullMapDispatchToProps;
 
-// Public
-exports.Provider = ReactRedux.Provider;
-exports.connect = connect;
