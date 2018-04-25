@@ -8,6 +8,9 @@
   "source": "index.js",
   "module": "dist/react-redux-simple.esm.js",
   "umd:main": "dist/react-redux-simple.umd.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "tape tests.js | tap-spec",
     "build": "microbundle build",
