@@ -8,7 +8,7 @@ let {
   _createFullMapStateToProps,
   _createBasicMapStateToProps,
   _createFullMapDispatchToProps,
-} = require("./");
+} = require("./dist/react-redux-simple.js");
 
 test("Provider", t => {
   t.ok(typeof Provider === "function", "exports Provider from react-redux");

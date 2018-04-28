@@ -12,8 +12,9 @@
     "dist"
   ],
   "scripts": {
-    "test": "tape tests.js | tap-spec",
     "build": "microbundle build",
+    "pretest": "npm run build",
+    "test": "tape tests.js | tap-spec",
     "prepare": "npm test && npm run build"
   },
   "peerDependencies": {
