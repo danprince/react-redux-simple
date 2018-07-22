@@ -3,7 +3,7 @@ import * as ReactRedux from "react-redux";
 /**
  * Converts selectors into a mapStateToProps implementation.
  */
-function createMapStateToProps(selectors) {
+export function createMapStateToProps(selectors) {
   if (typeof selectors === "function") {
     return createFullMapStateToProps(selectors);
   } else {
@@ -14,7 +14,7 @@ function createMapStateToProps(selectors) {
 /**
  * Converts actions into a mapDispatchToProps implementation.
  */
-function createMapDispatchToProps(actions) {
+export function createMapDispatchToProps(actions) {
   if (typeof actions === "function") {
     return createFullMapDispatchToProps(actions);
   } else {
@@ -27,7 +27,7 @@ function createMapDispatchToProps(actions) {
  * data from the store whenever the store's state changes or the component
  * is passed new props.
  */
-function createFullMapStateToProps(selectorFactory) {
+export function createFullMapStateToProps(selectorFactory) {
   return (state, ownProps) => {
     let selectors = selectorFactory(ownProps);
     let props = {};
@@ -44,7 +44,7 @@ function createFullMapStateToProps(selectorFactory) {
  * Returns the one argument version of mapStateToProps that will only select
  * props when the store's state changes.
  */
-function createBasicMapStateToProps(selectors) {
+export function createBasicMapStateToProps(selectors) {
   return state => {
     let props = {};
 
@@ -60,7 +60,7 @@ function createBasicMapStateToProps(selectors) {
  * Returns the two argument version of mapDispatchToProps that will rebind
  * the action creators whenever the component receives props.
  */
-function createFullMapDispatchToProps(actionsFactory) {
+export function createFullMapDispatchToProps(actionsFactory) {
   return (dispatch, ownProps) => {
     let actions = actionsFactory(ownProps);
     let props = {};
@@ -87,10 +87,4 @@ export function connect(component) {
     actions && createMapDispatchToProps(actions)
   )(component);
 }
-
-export const _createMapDispatchToProps = createMapDispatchToProps;
-export const _createMapStateToProps = createMapStateToProps;
-export const _createFullMapStateToProps = createFullMapStateToProps;
-export const _createBasicMapStateToProps = createBasicMapStateToProps;
-export const _createFullMapDispatchToProps = createFullMapDispatchToProps;
 

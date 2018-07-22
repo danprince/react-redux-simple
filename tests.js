@@ -3,11 +3,11 @@ let spy = require("spy");
 
 let {
   Provider,
-  _createMapDispatchToProps,
-  _createMapStateToProps,
-  _createFullMapStateToProps,
-  _createBasicMapStateToProps,
-  _createFullMapDispatchToProps,
+  createMapDispatchToProps,
+  createMapStateToProps,
+  createFullMapStateToProps,
+  createBasicMapStateToProps,
+  createFullMapDispatchToProps,
 } = require("./dist/react-redux-simple.js");
 
 test("Provider", t => {
@@ -17,7 +17,7 @@ test("Provider", t => {
 
 test("createBasicMapStateToProps", t => {
   let selectors = { count: state => state.count };
-  let mapState = _createBasicMapStateToProps(selectors);
+  let mapState = createBasicMapStateToProps(selectors);
   let state = { count: 1 };
   let props = mapState(state);
   t.same(props, { count: 1 }, "should map state to props");
@@ -26,7 +26,7 @@ test("createBasicMapStateToProps", t => {
 
 test("createFullMapStateToProps", t => {
   let selectors = props => ({ count: state => state.count + props.count });
-  let mapState = _createFullMapStateToProps(selectors);
+  let mapState = createFullMapStateToProps(selectors);
   let state = { count: 1 };
   let ownProps = { count: 3 };
   let props = mapState(state, ownProps);
@@ -37,7 +37,7 @@ test("createFullMapStateToProps", t => {
 test("createFullMapDispatchToProps", t => {
   let dispatch = spy();
   let actions = props => ({ inc: () => ({ type: "INC", by: props.amount }) });
-  let mapDispatch = _createFullMapDispatchToProps(actions);
+  let mapDispatch = createFullMapDispatchToProps(actions);
   let ownProps = { amount: 1 };
   let props = mapDispatch(dispatch, ownProps);
 
@@ -47,11 +47,11 @@ test("createFullMapDispatchToProps", t => {
 });
 
 test("createMapStateToProps", t => {
-  let basic = _createMapStateToProps({
+  let basic = createMapStateToProps({
     count: state => state.count
   });
 
-  let full = _createMapStateToProps(props => ({
+  let full = createMapStateToProps(props => ({
     count: state => state.count
   }));
 
@@ -62,11 +62,11 @@ test("createMapStateToProps", t => {
 });
 
 test("createMapDispatchToProps", t => {
-  let basic = _createMapDispatchToProps({
+  let basic = createMapDispatchToProps({
     inc: () => ({ type: "INC" })
   });
 
-  let full = _createMapDispatchToProps(props => ({
+  let full = createMapDispatchToProps(props => ({
     inc: () => ({ type: "INC" })
   }));
 
