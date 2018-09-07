@@ -76,15 +76,46 @@ export function createFullMapDispatchToProps(actionsFactory) {
   }
 }
 
+function validateSelectors(selectors, component) {
+  if (typeof selectors === "object") {
+    for (let key in selectors) {
+      let type = typeof selectors[key];
+      let name = component.name ? `<${component.name}>` : "component";
+
+      if (type !== "function") {
+        console.warn(`Invalid selector "${key}" in ${name}! Expected a function but got "${type}"!`);
+      }
+    }
+  }
+}
+
+function validateActions(actions, component) {
+  if (typeof actions === "object") {
+    for (let key in actions) {
+      let action = actions[key];
+      let name = component.name ? `<${component.name}>` : "component";
+
+      if (type !== "function") {
+        console.warn(`Invalid action "${key}" in ${name}! Expected a function but got "${type}"!`);
+      }
+    }
+  }
+}
+
 export const Provider = ReactRedux.Provider;
 
 export function connect(component) {
   let selectors = component.selectors;
   let actions = component.actions;
 
-  return ReactRedux.connect(
+  if (selectors) validateSelectors(selectors);
+  if (actions) validateActions(actions);
+
+  let connector = ReactRedux.connect(
     selectors && createMapStateToProps(selectors),
     actions && createMapDispatchToProps(actions)
-  )(component);
+  );
+
+  return connector(component);
 }
 
