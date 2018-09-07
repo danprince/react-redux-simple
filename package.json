@@ -1,7 +1,7 @@
 {
   "name": "react-redux-simple",
   "description": "A selector friendly shortcut for React-Redux",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "main": "dist/react-redux-simple.js",
   "author": "Dan Prince",
   "license": "MIT",
