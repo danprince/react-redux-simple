@@ -79,11 +79,11 @@ export function createFullMapDispatchToProps(actionsFactory) {
 function validateSelectors(selectors, component) {
   if (typeof selectors === "object") {
     for (let key in selectors) {
-      let type = typeof selectors[key];
+      let selector = selectors[key];
       let name = component.name ? `<${component.name}>` : "component";
 
-      if (type !== "function") {
-        console.warn(`Invalid selector "${key}" in ${name}! Expected a function but got "${type}"!`);
+      if (typeof selector !== "function") {
+        console.warn(`Invalid selector "${key}" in ${name}! Expected a function but got "${typeof selector}"!`);
       }
     }
   }
@@ -95,8 +95,8 @@ function validateActions(actions, component) {
       let action = actions[key];
       let name = component.name ? `<${component.name}>` : "component";
 
-      if (type !== "function") {
-        console.warn(`Invalid action "${key}" in ${name}! Expected a function but got "${type}"!`);
+      if (typeof action !== "function") {
+        console.warn(`Invalid action "${key}" in ${name}! Expected a function but got "${typeof action}"!`);
       }
     }
   }
