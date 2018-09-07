@@ -108,8 +108,8 @@ export function connect(component) {
   let selectors = component.selectors;
   let actions = component.actions;
 
-  if (selectors) validateSelectors(selectors);
-  if (actions) validateActions(actions);
+  if (selectors) validateSelectors(selectors, component);
+  if (actions) validateActions(actions, component);
 
   let connector = ReactRedux.connect(
     selectors && createMapStateToProps(selectors),
