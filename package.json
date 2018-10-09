@@ -6,6 +6,7 @@
   "author": "Dan Prince",
   "license": "MIT",
   "source": "index.js",
+  "types": "index.d.ts",
   "module": "dist/react-redux-simple.esm.js",
   "umd:main": "dist/react-redux-simple.umd.js",
   "files": [
